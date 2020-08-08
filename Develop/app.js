@@ -21,7 +21,7 @@ function employeesRole () {
     inquirer.prompt ([{
         type: "list",
         name: "choice",
-        choices: ['Manger', 'Engineer', 'Intern', 'Done'],
+        choices: ['Manager', 'Engineer', 'Intern', 'Done'],
         message: "Please choose what kind of employee you would like to add"
     }])
         .then(function (answers) {
@@ -127,7 +127,7 @@ function internInformation (){
             name: "school"
         },
     ]).then (function (internResponse){
-        const   interns = new Intern (internResponse.Name, internResponse.ID, internResponse.Email, internResponse.school)
+        const   intern = new Intern (internResponse.Name, internResponse.ID, internResponse.Email, internResponse.school)
         employees.push(intern);
 
         employeesRole();
@@ -138,11 +138,11 @@ function internInformation (){
 employeesRole();
 
 
-function createHTML () {
+function createHTMLFile () {
     if (!fs.existsSync(OUTPUT_DIR)) {
         fs.mkdirSync(OUTPUT_DIR)
       }
-      fs.writeFileSync(outputPath, render(teamMembers), "utf-8");
+      fs.writeFileSync(outputPath, render(employees), "utf-8");
 };
 
 // After the user has input all employees desired, call the `render` function (required

@@ -15,4 +15,4 @@ class Engineer extends Employee {
     }
 }
 
-module.export = Engineer;
+module.exports = Engineer;
